@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СТО "LebedKa"</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Оставляем ваши основные стили без изменений */
+        /* Основные стили */
+
+        /* Навигационное меню */
+        nav {
+            width:100%;
+            margin: 0 auto;
+			z-index:99;
+        }
+
+        ul {
+            margin:0;
+            padding:0;
+            list-style:none;
+            height:50px;
+        }
+
+        ul li {
+            float:right;
+        }
+
+        ul li a {
+            color:#fff;
+            display:block;
+            height:50px;
+            padding:0 30px;
+            text-transform:uppercase;
+            text-decoration:none;
+            line-height:50px;
+        }
+
+        ul li a:hover {
+            background:#d34d43;
+        }
+
+        h1 {
+            margin:0;
+            padding:0;
+            list-style:none;
+            height:50px;
+            color:#fff;
+            display:block;
+            height:50px;
+            padding:0 30px;
+            text-transform:uppercase;
+            text-decoration:none;
+            line-height:50px;
+            z-index: 1;
+            float:left;
+        }
+
+        /* Фоновое видео */
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -3;
+        }
+
+        /* Движущаяся картинка */
+        #movingImage {
+            position: absolute;
+            top: 20%;
+            left: 0%;
+            transform: translateX(-50%); /* Центрирование картинки по горизонтали */
+            transition: left 2s ease; /* Плавная анимация движения */
+            z-index: 5;
+            max-width: 100%; /* Делаем изображение адаптивным */
+            height: auto; /* Автоматическое вычисление высоты */
+        }
+
+        /* Всплывающий текст */
+        #bottom-popup {
+            position: absolute;
+            left:20%;
+            top: 100%; /* Изначальное положение картинки */
+            transition: top 2s ease; /* Плавная анимация движения */
+            z-index: 7;
+            width: 40%;
+            height:40%;
+            background-color: rgba(0, 0, 0, 0.5); /* черный полупрозрачный цвет */
+            color: #fff; /* белый цвет текста */
+            padding: 15px;
+            box-sizing: border-box;
+            font-size:20px;
+			overflow: auto;
+        }
+
+        /* Медиа-запросы для адаптивности */
+
+        /* Для экранов шириной меньше 768px */
+        @media screen and (max-width: 768px) {
+            #bottom-popup {
+                width: 80%; /* Увеличиваем ширину всплывающего окна */
+                left: 10%; /* Располагаем в центре по горизонтали */
+                font-size: 16px; /* Уменьшаем размер шрифта */
+            }
+        }
+
+        /* Для экранов шириной меньше 480px */
+        @media screen and (max-width: 480px) {
+            #bottom-popup {
+                width: 90%; /* Увеличиваем ширину всплывающего окна */
+                left: 5%; /* Располагаем в центре по горизонтали */
+                font-size: 14px; /* Уменьшаем размер шрифта */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">LebedKa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Услуги</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <video autoplay muted loop id="myVideo">
+        <source src="backgroudvizit1.mp4" type="video/mp4">
+    </video>
+
+    <img src="mechanik1-removebg-preview.png" id="movingImage">
+    <div id="bottom-popup">
+        <p>
+            Добро пожаловать в СТО LebedKa!<br>
+            Наша компания — это история страсти к автомобилям и высокого мастерства.<br>
+            Мы предлагаем индивидуальный подход к каждому клиенту, качественные услуги по тюнингу, обслуживанию и ремонту автомобилей.<br>
+            Наши преимущества — опытные специалисты, использование только лучших материалов и гарантия качества.<br>
+            Доверьте нам свой автомобиль, и мы сделаем его лучше, чем когда-либо прежде!<br>
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var movingImage = document.getElementById("movingImage");
+            setTimeout(function() {
+                movingImage.style.left = "60%"; // Изменяем положение картинки
+            }, 1000); // Через 1 секунду после загрузки страницы
+        });
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var movingImage = document.getElementById("bottom-popup");
+            setTimeout(function() {
+                movingImage.style.top = "50%"; // Изменяем положение картинки
+            }, 1500); // Через 1 секунду после загрузки страницы
+        });
+    </script>
+</body>
+</html>
